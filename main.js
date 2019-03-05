@@ -74,23 +74,51 @@ const students = [
 ]
 /*
 
-
 */
-const createStudentComponent = () => {
+const studentContainer = document.querySelector("#container")
+
+
+
+const createStudentComponent = (name, subject, info) => {
     return `
-        <div class="student">
-            <h1>Alejandro Font</h1>
-            <section>Day cohort 27</section>
-            <aside>
-                Wore pants that were too short for his legs.
-                Was an incredible friend to his teammates.
-            </aside>
-        </div>
+    <div class="student">
+    <h1>${name}</h1>
+    <section>${subject}</section>
+    <aside>${info}</aside>
+    </div>
     `
 }
 
-// Then store a reference to an existing HTML element
-const studentContainer = document.querySelector("#container")
+for (let i = 0; i < students.length; i++) {
+    const student = students[i]
+    studentContainer.innerHTML += createStudentComponent(
+        student.name,
+        student.subject,
+        student.info
+    )
+}
 
-// Update its contents with the return value of the function
-studentContainer.innerHTML = createStudentComponent()
+// Iterate the array of students, and apply the correct style to the h1 depending on the score of the student being below 60, or above it.
+for (const student of students) {
+    let studentComponent = ""
+    if (student.score >= 60) {
+        const studentPassing = studentComponent
+        console.log(studentPassing)
+    } else {
+        const studentFailing = studentComponent
+        console.log(studentFailing)
+    }
+}
+
+if (studentPassing === true)   {
+    createStudentComponent = (`
+    <div class="student">
+    <h1 class="xx-large passing">${name}</h1>
+    <section class="bordered dashed section--padded">${subject}</section>
+    <aside class="pushRight">${info}</aside>
+    </div>
+    `
+    )
+} else {
+    createStudentComponent = createStudentComponent
+}
