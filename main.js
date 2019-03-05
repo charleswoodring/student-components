@@ -97,16 +97,18 @@ for (let i = 0; i < students.length; i++) {
         student.info
     )
 }
+let studentPassing = ""
+let studentFailing = ""
 
 // Iterate the array of students, and apply the correct style to the h1 depending on the score of the student being below 60, or above it.
 for (const student of students) {
     let studentComponent = ""
     if (student.score >= 60) {
-        const studentPassing = studentComponent
-        console.log(studentPassing)
+        studentPassing = studentComponent
+        console.log("Passing")
     } else {
-        const studentFailing = studentComponent
-        console.log(studentFailing)
+        studentFailing = studentComponent
+        console.log("Failing")
     }
 }
 
@@ -120,5 +122,5 @@ if (studentPassing === true)   {
     `
     )
 } else {
-    createStudentComponent = createStudentComponent
+    studentFailing = createStudentComponent
 }
