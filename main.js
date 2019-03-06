@@ -77,9 +77,16 @@ const students = [
 */
 const studentContainer = document.querySelector("#container")
 
-
-
-const createStudentComponent = (name, subject, info) => {
+const createStudentComponent = (name, subject, info, score) => {
+	if (score >= 60) {
+		return `
+    <div class="student">
+    <h1 class="xx-large passing">${name}</h1>
+    <section class="bordered dashed section--padded">${subject}</section>
+    <aside class="pushRight">${info}</aside>
+    </div>
+    `
+    } else {
     return `
     <div class="student">
     <h1>${name}</h1>
@@ -87,6 +94,7 @@ const createStudentComponent = (name, subject, info) => {
     <aside>${info}</aside>
     </div>
     `
+    }
 }
 
 for (let i = 0; i < students.length; i++) {
@@ -94,33 +102,10 @@ for (let i = 0; i < students.length; i++) {
     studentContainer.innerHTML += createStudentComponent(
         student.name,
         student.subject,
-        student.info
+        student.info,
+        student.score
     )
 }
-let studentPassing = ""
-let studentFailing = ""
 
-// Iterate the array of students, and apply the correct style to the h1 depending on the score of the student being below 60, or above it.
-for (const student of students) {
-    let studentComponent = ""
-    if (student.score >= 60) {
-        studentPassing = studentComponent
-        console.log("Passing")
-    } else {
-        studentFailing = studentComponent
-        console.log("Failing")
-    }
-}
 
-if (studentPassing === true)   {
-    createStudentComponent = (`
-    <div class="student">
-    <h1 class="xx-large passing">${name}</h1>
-    <section class="bordered dashed section--padded">${subject}</section>
-    <aside class="pushRight">${info}</aside>
-    </div>
-    `
-    )
-} else {
-    studentFailing = createStudentComponent
-}
+//  DO NOT TRY TO REDO WHAT THE FUNCTION DOES, JUST ALTER THE FUNCTION
